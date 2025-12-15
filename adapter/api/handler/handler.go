@@ -22,13 +22,10 @@ func (h *UserHandler) Register(c *fiber.Ctx) error {
 		Password string `json:"password"`
 	}
 
-	// Fiber ใช้ BodyParser แทน json.Decode
 	if err := c.BodyParser(&req); err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid request body"})
 	}
 
-	// เรียก Service (Logic เดิม)
-	// c.Context() ของ Fiber ใช้แทน r.Context() ได้เลย
 	user, err := h.service.Register(c.Context(), req.Name, req.Email, req.Password)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": err.Error()})
