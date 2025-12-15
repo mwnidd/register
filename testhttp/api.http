@@ -1,0 +1,43 @@
+### Health
+GET http://localhost:8080/health
+
+### Register
+POST http://localhost:8080/register
+Content-Type: application/json
+
+{
+  "name": "Alice",
+  "email": "alice@example.com",
+  "password": "secret"
+}
+
+### Login (copy token from response)
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "email": "alice@example.com",
+  "password": "secret"
+}
+
+### List users (replace <JWT>)
+GET http://localhost:8080/api/users
+Authorization: Bearer <JWT>
+
+### Get user by ID (replace <USER_ID> and <JWT>)
+GET http://localhost:8080/api/users/<USER_ID>
+Authorization: Bearer <JWT>
+
+### Update user (replace <USER_ID> and <JWT>)
+PUT http://localhost:8080/api/users/<USER_ID>
+Authorization: Bearer <JWT>
+Content-Type: application/json
+
+{
+  "name": "New Name",
+  "email": "new@example.com"
+}
+
+### Delete user (replace <USER_ID> and <JWT>)
+DELETE http://localhost:8080/api/users/<USER_ID>
+Authorization: Bearer <JWT>

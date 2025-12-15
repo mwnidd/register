@@ -1,0 +1,9 @@
+server:
+  port: ":8080"
+
+mongo:
+  uri: "mongodb://localhost:27017"
+  db_name: "userdb"
+
+app:
+  jwt_secret: "change_this_to_something_secret_in_prod"
